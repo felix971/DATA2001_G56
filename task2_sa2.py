@@ -415,6 +415,8 @@ def get_sa4_poi_df_by_code(sa4_code):
 def save_to_sqlite(sa2_bbox_df, poi_df, db_path):
     conn = sqlite3.connect(db_path)
     conn.execute("pragma foreign_keys = on")
+    conn.execute("drop table if exists poi_rtree")
+    conn.execute("drop table if exists sa2_scores")
     conn.execute("drop table if exists poi")
     conn.execute("drop table if exists sa2_bbox")
     conn.execute(
@@ -455,7 +457,135 @@ def save_to_sqlite(sa2_bbox_df, poi_df, db_path):
     )
     sa2_bbox_df.to_sql("sa2_bbox", conn, if_exists="append", index=False)
     poi_df.to_sql("poi", conn, if_exists="append", index=False)
+    create_database_indexes(conn)
+    refresh_score_table(conn)
     conn.close()
+
+
+def create_database_indexes(conn):
+    conn.execute("create index if not exists idx_sa2_bbox_sa4 on sa2_bbox(sa4_code)")
+    conn.execute("create index if not exists idx_poi_sa2 on poi(sa2_main)")
+    conn.execute("create index if not exists idx_poi_sa4 on poi(sa4_code)")
+    conn.execute("create index if not exists idx_poi_type on poi(poitype)")
+    conn.execute(
+        """
+        create virtual table if not exists poi_rtree using rtree(
+            poi_id,
+            min_longitude,
+            max_longitude,
+            min_latitude,
+            max_latitude
+        )
+        """
+    )
+    conn.execute("delete from poi_rtree")
+    conn.execute(
+        """
+        insert into poi_rtree
+        select poi_id, longitude, longitude, latitude, latitude
+        from poi
+        where longitude is not null and latitude is not null
+        """
+    )
+
+
+def refresh_score_table(conn):
+    conn.executescript(
+        """
+        drop table if exists sa2_scores;
+
+        create table sa2_scores (
+            area_name text,
+            sa4_code text,
+            sa4_name text,
+            sa2_main text primary key,
+            sa2_name text,
+            area_sqkm real,
+            poi_count integer,
+            z_poi real,
+            score real
+        );
+
+        insert into sa2_scores (
+            area_name,
+            sa4_code,
+            sa4_name,
+            sa2_main,
+            sa2_name,
+            area_sqkm,
+            poi_count,
+            z_poi,
+            score
+        )
+        with counts as (
+            select
+                s.area_name,
+                s.sa4_code,
+                s.sa4_name,
+                s.sa2_main,
+                s.sa2_name,
+                s.area_sqkm,
+                count(p.poi_id) as poi_count
+            from sa2_bbox s
+            left join poi p
+                on s.sa2_main = p.sa2_main
+            group by
+                s.area_name,
+                s.sa4_code,
+                s.sa4_name,
+                s.sa2_main,
+                s.sa2_name,
+                s.area_sqkm
+        ),
+        stats as (
+            select
+                sa4_code,
+                avg(poi_count * 1.0) as mean_poi,
+                case
+                    when count(*) > 1 then sqrt(
+                        (sum(poi_count * poi_count * 1.0)
+                        - sum(poi_count * 1.0) * sum(poi_count * 1.0) / count(*))
+                        / (count(*) - 1)
+                    )
+                    else 0
+                end as stddev_poi
+            from counts
+            group by sa4_code
+        ),
+        zscores as (
+            select
+                c.area_name,
+                c.sa4_code,
+                c.sa4_name,
+                c.sa2_main,
+                c.sa2_name,
+                c.area_sqkm,
+                c.poi_count,
+                case
+                    when s.stddev_poi is null or s.stddev_poi = 0 then 0
+                    else (c.poi_count - s.mean_poi) / s.stddev_poi
+                end as z_poi
+            from counts c
+            join stats s
+                on c.sa4_code = s.sa4_code
+        )
+        select
+            area_name,
+            sa4_code,
+            sa4_name,
+            sa2_main,
+            sa2_name,
+            area_sqkm,
+            poi_count,
+            z_poi,
+            1.0 / (1.0 + exp(-z_poi)) as score
+        from zscores;
+
+        create unique index if not exists idx_sa2_scores_sa2 on sa2_scores(sa2_main);
+        create index if not exists idx_sa2_scores_sa4 on sa2_scores(sa4_code);
+        create index if not exists idx_sa2_scores_score on sa2_scores(score);
+        """
+    )
 
 
 def build_selected_areas_database(

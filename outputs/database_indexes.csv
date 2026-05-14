@@ -1,0 +1,89 @@
+name,tbl_name,sql
+idx_poi_sa2,poi,CREATE INDEX idx_poi_sa2 on poi(sa2_main)
+idx_poi_sa4,poi,CREATE INDEX idx_poi_sa4 on poi(sa4_code)
+idx_poi_type,poi,CREATE INDEX idx_poi_type on poi(poitype)
+idx_sa2_bbox_sa4,sa2_bbox,CREATE INDEX idx_sa2_bbox_sa4 on sa2_bbox(sa4_code)
+idx_sa2_income_median,sa2_income,"CREATE INDEX idx_sa2_income_median
+        on sa2_income(median_total_income_2022)
+        "
+idx_sa2_income_sa4,sa2_income,CREATE INDEX idx_sa2_income_sa4 on sa2_income(sa4_code)
+idx_sa2_scores_sa2,sa2_scores,CREATE UNIQUE INDEX idx_sa2_scores_sa2 on sa2_scores(sa2_main)
+idx_sa2_scores_sa4,sa2_scores,CREATE INDEX idx_sa2_scores_sa4 on sa2_scores(sa4_code)
+idx_sa2_scores_score,sa2_scores,CREATE INDEX idx_sa2_scores_score on sa2_scores(score)
+idx_score_income_sa2,score_income_analysis,"CREATE UNIQUE INDEX idx_score_income_sa2
+            on score_income_analysis(sa2_main)"
+idx_score_income_sa4,score_income_analysis,"CREATE INDEX idx_score_income_sa4
+            on score_income_analysis(sa4_code)"
+poi,poi,"CREATE TABLE poi (
+            poi_id integer primary key autoincrement,
+            objectid integer,
+            poiname text,
+            poitype text,
+            poigroup integer,
+            longitude real,
+            latitude real,
+            area_name text,
+            sa4_code text,
+            sa4_name text,
+            sa2_main text,
+            sa2_name text,
+            foreign key (sa2_main) references sa2_bbox(sa2_main)
+        )"
+poi_rtree,poi_rtree,"CREATE VIRTUAL TABLE poi_rtree using rtree(
+            poi_id,
+            min_longitude,
+            max_longitude,
+            min_latitude,
+            max_latitude
+        )"
+poi_rtree_node,poi_rtree_node,"CREATE TABLE ""poi_rtree_node""(nodeno INTEGER PRIMARY KEY,data)"
+poi_rtree_parent,poi_rtree_parent,"CREATE TABLE ""poi_rtree_parent""(nodeno INTEGER PRIMARY KEY,parentnode)"
+poi_rtree_rowid,poi_rtree_rowid,"CREATE TABLE ""poi_rtree_rowid""(rowid INTEGER PRIMARY KEY,nodeno)"
+sa2_bbox,sa2_bbox,"CREATE TABLE sa2_bbox (
+            area_name text,
+            sa4_code text,
+            sa4_name text,
+            sa2_main text primary key,
+            sa2_name text,
+            state_name text,
+            area_sqkm real,
+            bbox_xmin real,
+            bbox_ymin real,
+            bbox_xmax real,
+            bbox_ymax real
+        )"
+sa2_income,sa2_income,"CREATE TABLE sa2_income (
+            sa2_main text primary key,
+            sa2_name text,
+            sa4_code text,
+            sa4_name text,
+            median_total_income_2022 integer
+        )"
+sa2_scores,sa2_scores,"CREATE TABLE sa2_scores (
+            area_name text,
+            sa4_code text,
+            sa4_name text,
+            sa2_main text primary key,
+            sa2_name text,
+            area_sqkm real,
+            poi_count integer,
+            z_poi real,
+            score real
+        )"
+score_income_analysis,score_income_analysis,"CREATE TABLE score_income_analysis (
+            area_name text,
+            sa4_code text,
+            sa4_name text,
+            sa2_main text primary key,
+            sa2_name text,
+            area_sqkm real,
+            poi_count integer,
+            z_poi real,
+            score real,
+            median_total_income_2022 integer
+        )"
+score_income_correlation,score_income_correlation,"CREATE TABLE score_income_correlation (
+            correlation_id text primary key,
+            n integer,
+            pearson_r real
+        )"

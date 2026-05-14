@@ -1,0 +1,104 @@
+sa2_main,sa2_name,sa4_code,sa4_name,median_total_income_2022
+117011320,Banksmeadow,117,Sydney - City and Inner South,81419.0
+117011321,Botany,117,Sydney - City and Inner South,69628.0
+117011323,Pagewood - Hillsdale - Daceyville,117,Sydney - City and Inner South,56099.0
+117011324,Port Botany Industrial,117,Sydney - City and Inner South,84945.0
+117011325,Sydney Airport,117,Sydney - City and Inner South,
+117011634,Eastlakes,117,Sydney - City and Inner South,50611.0
+117011635,Mascot,117,Sydney - City and Inner South,55560.0
+117021327,Petersham - Stanmore,117,Sydney - City and Inner South,72642.0
+117021328,Sydenham - Tempe - St Peters,117,Sydney - City and Inner South,74246.0
+117021636,Marrickville - North,117,Sydney - City and Inner South,72435.0
+117021637,Marrickville - South,117,Sydney - City and Inner South,63531.0
+117031329,Darlinghurst,117,Sydney - City and Inner South,78181.0
+117031330,Erskineville - Alexandria,117,Sydney - City and Inner South,92278.0
+117031331,Glebe - Forest Lodge,117,Sydney - City and Inner South,70395.0
+117031333,Potts Point - Woolloomooloo,117,Sydney - City and Inner South,77868.0
+117031336,Surry Hills,117,Sydney - City and Inner South,76228.0
+117031638,Camperdown - Darlington,117,Sydney - City and Inner South,64744.0
+117031639,Chippendale,117,Sydney - City and Inner South,48019.0
+117031640,Newtown (NSW),117,Sydney - City and Inner South,72533.0
+117031641,Pyrmont,117,Sydney - City and Inner South,67372.0
+117031642,Redfern,117,Sydney - City and Inner South,69419.0
+117031643,Rosebery - Beaconsfield,117,Sydney - City and Inner South,71566.0
+117031644,Sydney (North) - Millers Point,117,Sydney - City and Inner South,56390.0
+117031645,Sydney (South) - Haymarket,117,Sydney - City and Inner South,37517.0
+117031646,Ultimo,117,Sydney - City and Inner South,40215.0
+117031647,Waterloo,117,Sydney - City and Inner South,71820.0
+117031648,Zetland,117,Sydney - City and Inner South,67414.0
+118011339,Bondi - Tamarama - Bronte,118,Sydney - Eastern Suburbs,77711.0
+118011340,Bondi Beach - North Bondi,118,Sydney - Eastern Suburbs,77502.0
+118011341,Bondi Junction - Waverly,118,Sydney - Eastern Suburbs,71940.0
+118011342,Centennial Park,118,Sydney - Eastern Suburbs,
+118011344,Dover Heights,118,Sydney - Eastern Suburbs,73151.0
+118011345,Paddington - Moore Park,118,Sydney - Eastern Suburbs,88354.0
+118011346,Rose Bay - Vaucluse - Watsons Bay,118,Sydney - Eastern Suburbs,80724.0
+118011347,Woollahra,118,Sydney - Eastern Suburbs,89462.0
+118011649,Bellevue Hill,118,Sydney - Eastern Suburbs,86208.0
+118011650,Double Bay - Darling Point,118,Sydney - Eastern Suburbs,88761.0
+118021564,Kensington (NSW),118,Sydney - Eastern Suburbs,58128.0
+118021565,Kingsford,118,Sydney - Eastern Suburbs,51671.0
+118021566,Maroubra - North,118,Sydney - Eastern Suburbs,68654.0
+118021567,Maroubra - South,118,Sydney - Eastern Suburbs,63854.0
+118021568,Maroubra - West,118,Sydney - Eastern Suburbs,58512.0
+118021569,Randwick - North,118,Sydney - Eastern Suburbs,78869.0
+118021570,Randwick - South,118,Sydney - Eastern Suburbs,71320.0
+118021651,Coogee - Clovelly,118,Sydney - Eastern Suburbs,84396.0
+118021652,Malabar - La Perouse,118,Sydney - Eastern Suburbs,66000.0
+118021653,Matraville - Chifley,118,Sydney - Eastern Suburbs,60043.0
+118021654,South Coogee,118,Sydney - Eastern Suburbs,69178.0
+120011383,Concord - Mortlake - Cabarita,120,Sydney - Inner West,65979.0
+120011385,Drummoyne - Rodd Point,120,Sydney - Inner West,78046.0
+120011386,Five Dock - Abbotsford,120,Sydney - Inner West,71985.0
+120011672,Concord West - North Strathfield,120,Sydney - Inner West,61377.0
+120011673,Rhodes,120,Sydney - Inner West,58540.0
+120021387,Balmain,120,Sydney - Inner West,91603.0
+120021389,Lilyfield - Rozelle,120,Sydney - Inner West,88831.0
+120021674,Annandale (NSW),120,Sydney - Inner West,82894.0
+120021675,Leichhardt,120,Sydney - Inner West,82298.0
+120031392,Canterbury (North) - Ashbury,120,Sydney - Inner West,59630.0
+120031393,Croydon Park - Enfield,120,Sydney - Inner West,55440.0
+120031394,Dulwich Hill - Lewisham,120,Sydney - Inner West,73523.0
+120031395,Haberfield - Summer Hill,120,Sydney - Inner West,72150.0
+120031396,Homebush,120,Sydney - Inner West,52860.0
+120031576,Strathfield South,120,Sydney - Inner West,58257.0
+120031676,Ashfield - North,120,Sydney - Inner West,56987.0
+120031677,Ashfield - South,120,Sydney - Inner West,54305.0
+120031678,Burwood (NSW),120,Sydney - Inner West,40432.0
+120031679,Croydon,120,Sydney - Inner West,55750.0
+120031680,Strathfield - East,120,Sydney - Inner West,45500.0
+120031681,Strathfield - West,120,Sydney - Inner West,62650.0
+125011475,Rookwood Cemetery,125,Sydney - Parramatta,
+125011582,Auburn - Central,125,Sydney - Parramatta,35966.0
+125011583,Auburn - North,125,Sydney - Parramatta,36918.0
+125011584,Auburn - South,125,Sydney - Parramatta,37800.0
+125011585,Berala,125,Sydney - Parramatta,41659.0
+125011586,Lidcombe,125,Sydney - Parramatta,42858.0
+125011587,Regents Park,125,Sydney - Parramatta,42949.0
+125011709,Silverwater - Newington,125,Sydney - Parramatta,58864.0
+125011710,Wentworth Point - Sydney Olympic Park,125,Sydney - Parramatta,62833.0
+125021477,Ermington - Rydalmere,125,Sydney - Parramatta,56306.0
+125021478,Oatlands - Dundas Valley,125,Sydney - Parramatta,51123.0
+125021711,Carlingford - East,125,Sydney - Parramatta,50323.0
+125021712,Carlingford - West,125,Sydney - Parramatta,51507.0
+125031479,Chester Hill - Sefton,125,Sydney - Parramatta,40420.0
+125031480,Fairfield - East,125,Sydney - Parramatta,39770.0
+125031481,Granville - Clyde,125,Sydney - Parramatta,42557.0
+125031483,Guildford - South Granville,125,Sydney - Parramatta,36552.0
+125031484,Guildford West - Merrylands West,125,Sydney - Parramatta,45282.0
+125031486,Smithfield Industrial,125,Sydney - Parramatta,52000.0
+125031487,Yennora Industrial,125,Sydney - Parramatta,47363.0
+125031713,Greystanes - South,125,Sydney - Parramatta,53559.0
+125031714,Merrylands - Holroyd,125,Sydney - Parramatta,44361.0
+125031715,Pemulwuy - Greystanes (North),125,Sydney - Parramatta,62568.0
+125031716,South Wentworthville,125,Sydney - Parramatta,51004.0
+125041489,North Parramatta,125,Sydney - Parramatta,60817.0
+125041490,North Rocks,125,Sydney - Parramatta,60003.0
+125041491,Northmead,125,Sydney - Parramatta,63053.0
+125041493,Toongabbie - Constitution Hill,125,Sydney - Parramatta,57565.0
+125041494,Winston Hills,125,Sydney - Parramatta,63257.0
+125041588,Pendle Hill - Girraween,125,Sydney - Parramatta,59682.0
+125041589,Wentworthville - Westmead,125,Sydney - Parramatta,60308.0
+125041717,Parramatta - North,125,Sydney - Parramatta,62786.0
+125041718,Parramatta - South,125,Sydney - Parramatta,53531.0
+125041719,Rosehill - Harris Park,125,Sydney - Parramatta,49654.0
